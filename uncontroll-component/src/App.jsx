@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <div align='center'>
-        <h1>Controller Component</h1>
+        <h1>UnController Component</h1>
         <form onSubmit={handleSubmit}>
           <table border='1' >
             <thead>
@@ -54,7 +54,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {records.map((item) => (
+            {record.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
