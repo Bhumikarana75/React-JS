@@ -1,0 +1,267 @@
+.popular {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+}
+
+/* .popular-main {
+    position: relative;
+} */
+
+.popular-main h2 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    font-weight: 600;
+}
+
+.popular-main p {
+    font-size: 14px;
+    color: #7a7a7a;
+    letter-spacing: 0.8px;
+    margin-bottom: 50px;
+}
+
+.popular-pro-button button {
+    padding: 12px 15px;
+    border-radius: 5px;
+    width: 306px;
+    height: 49px;
+    background-color: #f7f7f8;
+    text-align: left;
+    border: 1px solid #e9e9e9;
+    margin-bottom: 8px;
+}
+
+.popular-pro-button button a {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.667;
+    color: #2b2b2d;
+    text-decoration: none;
+    letter-spacing: 0.9spx;
+}
+
+.popular-pro-b1 button i {
+    color: #64b496;
+    margin-left: 240px;
+    font-size: 14px;
+}
+
+.popular-pro-b2 button i {
+    color: rgb(0, 0, 0);
+    margin-left: 212px;
+    font-size: 14px;
+}
+
+.popular-pro-b3 button i {
+    color: rgb(0, 0, 0);
+    margin-left: 178px;
+    font-size: 14px;
+}
+
+.popular-pro-b4 button i {
+    color: rgb(0, 0, 0);
+    margin-left: 218px;
+    font-size: 14px;
+}
+
+.popular-pro-b5 button i {
+    color: rgb(0, 0, 0);
+    margin-left: 200px;
+    font-size: 14px;
+}
+
+.popular-button-img img {
+    border-radius: 5px;
+    margin-top: 34px;
+}
+
+
+
+.down-popular {
+    margin-left: 20px;
+}
+
+.popular-box-card1,
+.popular-box-card2,
+.popular-box-card3,
+.popular-box-card4,
+.popular-box-card5,
+.popular-box-card6,
+.popular-box-card7,
+.popular-box-card8 {
+    padding: 12px;
+    border: 1px solid #e9e9e9;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.popular-box-img1 img {
+    border-radius: 5px;
+
+}
+
+.popular-box-con1 {
+    padding-top: 24px;
+    text-align: center;
+}
+
+.popular-box-con1 h6 {
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #777;
+}
+
+.popular-box-con1 i {
+    font-size: 13px;
+    color: #f5885f;
+    letter-spacing: 0.9px;
+}
+
+.popular-box-con1 span {
+    margin-left: 5px;
+    color: #999;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.popular-box-con1 h6:hover {
+    color: #64b496;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.popular-box-con1 h3 {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #2b2b2d;
+}
+
+.popular-box-con1 h3:hover {
+    color: #64b496;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.popular-box-con1 h5 {
+    color: #64b496;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.popular-box-con1 h5 span {
+    margin-left: 5px;
+    font-size: 13px;
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.popularcart-1,
+.popularcart-2,
+.popularcart-3,
+.popularcart-4,
+.popularcart-5,
+.popularcart-6,
+.popularcart-7,
+.popularcart-8 {
+    border-radius: 50%;
+    color: #64b496;
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
+    padding: 7px 0 0 0px;
+    border: 1px solid #e9e9e9;
+    background-color: white;
+    position: absolute;
+    top: 342px;
+    left: 555px;
+}
+
+.popularcart-2 {
+    left:802px;
+}
+
+.popularcart-3 {
+    left: 1050px;
+}
+
+.popularcart-4 {
+    left: 1296px;
+
+}
+
+.popularcart-5 {
+    top: 767px;
+}
+
+.popularcart-6 {
+    top: 769px;
+    left: 806px;
+}
+
+.popularcart-7 {
+    top: 769px;
+    left: 1050px;
+}
+.popularcart-8 {
+    top: 770px;
+    left: 1292px;
+
+}
+.popular-box-main-2 {
+    margin-top: 30px;
+}
+.popular-img-con{
+    margin-top: -510px;
+    margin-left: 10px;
+    padding: 60px 20px 20px 20px;
+}
+.popular-img-con h4{
+    margin-bottom: 5px;
+    font-size: 40px;
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.2;
+}
+.popular-img-con h5{
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 38px;
+    color: #f7e8aa;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+}
+.popular-img-con span{
+    font-size: 16px;
+    color: #fff;
+}
+.popular-img-con button{
+    margin-top: 10px;
+    padding: 5px 15px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #64b496;
+    height: 40px;
+    border: 0;
+}
+.popular-img-con button a{
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 0.9px;
+}
+.popular-img-con button:hover{
+    background-color: #2b2b2d;
+    transition: 0.5s;
+}
+.carrot-img img{
+    position: absolute;
+    top: 252px;
+    left: 28px;
+    width: 80px;
+    height: 110px;
+}

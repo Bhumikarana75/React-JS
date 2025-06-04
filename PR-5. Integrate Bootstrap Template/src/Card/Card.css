@@ -1,0 +1,108 @@
+.fresh{
+    padding: 100px;
+    position: relative;
+    font-family: 'Poppins',sans-serif;
+}
+.fresh-1 img,.fresh-2 img,.fresh-3 img{
+    width: 420px;
+    height: 230px;
+    border-radius: 7px;
+}
+.fresh1-con h5,.fresh2-con h5,.fresh3-con h5{
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    font-size: 20px;
+   font-weight:600;
+   line-height: 1.2;
+   color: #2b2b2d;
+   margin-bottom: 15px;
+}
+.fresh1-con h6 span,.fresh2-con h6 span,.fresh3-con h6 span{
+    font-size: 20px;
+    margin: 0 5px 0 0;
+    font-weight: bold;
+    color: #64b496;
+}
+.fresh1-con h6,.fresh2-con h6,.fresh3-con h6{
+    position: absolute;
+    font-size: 14px;
+    color: #7777;
+    line-height: 1.2;
+    top: 210px;
+    left: 150px;
+    font-weight:500;
+    letter-spacing: 0.5px;
+}
+.fresh1-con button,.fresh2-con button,.fresh3-con button{
+    position: absolute;
+    top: 250px;
+    left: 150px;
+    width: 117px;
+    height: 40px;
+    background-color: #64b496;
+    border: 0;
+    border-radius: 5px;   
+}
+.fresh1-con button a,.fresh2-con button a,.fresh3-con button a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.fresh1-con button:hover,.fresh2-con button:hover,.fresh3-con button:hover{
+    background-color: #2b2b2d;
+    transition: 0.3s;
+}
+.fresh1-con button:hover a,.fresh2-con button:hover a,.fresh3-con button:hover a{
+    transition: 0.3s;
+}
+ /* fresh 2  */
+.fresh2-con h5,.fresh2-con button,.fresh2-con h6{
+    left: 585px;
+}
+.fresh3-con h5,.fresh3-con button,.fresh3-con h6{
+    left:1014px;
+}
+
+.fresh {
+    --bs-fresh-spacer-y: 1rem;
+    --bs-fresh-spacer-x: 1rem;
+    --bs-fresh-title-spacer-y: 0.5rem;
+    --bs-fresh-title-color: ;
+    --bs-fresh-subtitle-color: ;
+    --bs-fresh-border-width: var(--bs-border-width);
+    --bs-fresh-border-color:0;
+    --bs-fresh-border-radius: var(--bs-border-radius);
+    --bs-fresh-box-shadow: ;
+    --bs-fresh-inner-border-radius: calc(var(--bs-border-radius) -(var(--bs-border-width)));
+    --bs-fresh-cap-padding-y: 0.5rem;
+    --bs-fresh-cap-padding-x: 1rem;
+    --bs-fresh-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-fresh-cap-color: ;
+    --bs-fresh-height: ;
+    --bs-fresh-color: ;
+    --bs-fresh-bg: var(--bs-body-bg);
+    --bs-fresh-img-overlay-padding: 1rem;
+    --bs-fresh-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-fresh-height);
+    color: var(--bs-body-color);
+    word-wrap: break-word;
+    background-color: var(--bs-fresh-bg);
+    background-clip: border-box;
+    border: var(--bs-fresh-border-width) solid var(--bs-fresh-border-color);
+    border-radius: var(--bs-fresh-border-radius);
+}
+.leaf-img img{
+    position: absolute;
+    top:10px;
+    left: 0;
+    transform: scaleX(-1);  
+    width: 110px;
+    height: 110px;
+}
