@@ -9,7 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <Table /> } />
           <Route path="/add" element={ <Form /> } />
-          <Route path="/edit" element={ <Edit /> } />
+          <Route path="/edit:editid" element={ <Edit /> } />
         </Routes>
       </BrowserRouter>
   )
