@@ -1,0 +1,83 @@
+.form-table{
+   background-color:#fde8d35c;
+   width: 100%;
+   height: 100vh;
+   align-items: center;
+   justify-content: center;
+   padding: 10px;
+}
+table{
+    width:490px;
+    text-align: center;
+    background-color: #eadbd4;
+    color: #30333a;
+    font-family: sans-serif;
+    border-radius: 3px;
+    padding: 10px;
+}
+table thead{
+    border-bottom:3px solid #fef7ef;
+    color: #feecdb;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #493b46;
+    letter-spacing: 1.2px;
+}
+table thead button{
+  width: 35px;
+  height: 30px;
+  background-color:#feecdb;
+  font-size: 15px;
+}   
+table thead button i{
+    font-size: 23px;
+    color: #41373f;
+}
+img, svg {
+    vertical-align:text-top;
+    margin-bottom: 10px;
+}
+table tbody tr{
+    color: #41373f;
+    font-family: sans-serif;
+    font-size: 18px;
+    background-color: #dedbdc00;
+
+}
+h2{
+    color: #534145;
+    font-family: serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-top: 40px;
+}
+table span i{
+    color: #493b46;
+    font-size: 20px;
+    font-weight: 900;
+}
+.form-table input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 20px;
+    height: 20px;
+    text-align: end;
+}
+.button-link{
+    width:70px;
+    height: 40px;
+    background-color:#493b46;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding-top: 4px;
+}
+.button-link a{
+    color: #feecdb;
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 20px;
+}

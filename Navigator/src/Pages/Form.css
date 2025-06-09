@@ -1,0 +1,77 @@
+.add-task h1{
+    color: #534145;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.add-task{
+    background-color:#fef7ef;
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+    width: 100%;
+}
+.add-task form .table2{
+    width: 500px;
+    height: 200px;
+    background-color: #eadbd4;
+    margin-left: 440px;
+}
+.add-task input{
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    color: #534145;
+}
+.form-submit input{
+    height: 35px;
+    background-color: #534145;
+    margin-top: 10px;
+    color: #feecdb;
+    font-size: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 800;
+}
+.form-table2{
+    margin-left: 500px;
+}
+.form-table2 tr td{
+    padding:0 20px;
+    width: 400px;
+    height:55px;
+    color: #534145;
+}
+.form-table2 tr td input{
+    width:260px;
+    padding: 5px;
+}
+.element.style {
+    font-size: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 800;
+    text-align: start;
+    padding: 0;
+    width: 400px;
+    height: 500px;
+}
+.form-table-button{
+    width: 100px;
+    height: 35px;
+    background-color: #534145;
+    margin-top: 10px;
+    margin-left: 700px;
+    margin-top: 20px;
+    border-radius: 5px;
+} 
+.form-table-button a{
+    color: #feecdb;
+    text-decoration: none;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 800;
+    font-size: 20px;
+    border: 0; 
+    padding-top: 10px;
+   
+}
