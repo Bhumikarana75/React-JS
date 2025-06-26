@@ -49,7 +49,7 @@ const Form = () => {
     setName("");
     setEmail("");
     setGender("");
-    setSelectedCourses("");
+    setSelectedCourses([]);
     setDate("");
   }
 

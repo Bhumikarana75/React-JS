@@ -20,7 +20,7 @@ const Edit = () => {
       setName(location.state.name || '');
       setEmail(location.state.email || '');
       setGender(location.state.gender || '');
-      setSelectedCourses(location.state.selectedCourses || []);
+      setSelectedCourses(location.state.courses || []);
       setDate(location.state.date || '');
       setEditId(location.state.id || '');
     }
@@ -35,7 +35,7 @@ const Edit = () => {
           name,
           email,
           gender,
-          selectedCourses,
+          courses : selectedCourses,
           date
         };
       }
