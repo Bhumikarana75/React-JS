@@ -1,112 +1,62 @@
-import { useState } from 'react'
-import './App.css'
-import { categories, products } from './data'
+import { useState } from 'react';
+import './App.css';
+import { genres, movies } from './data';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [selectedGenre, setSelectedGenre] = useState('All');
 
-  const filteredProducts = selectedCategory === 'All'
-    ? products
-    : products.filter(product => product.category === selectedCategory)
+  const filteredMovies = selectedGenre === 'All'
+    ? movies
+    : movies.filter(movie => movie.genre_ids.includes(selectedGenre));
 
   return (
-    <div align="center">
-      <table border="1">
-        <thead>
+    <div className="container text-center mt-4">
+      <h2 className="mb-4">🎬 Movie Genre Filter</h2>
+
+      <div className="mb-4">
+        <button className="btn btn-secondary me-2" onClick={() => setSelectedGenre('All')}>
+          All
+        </button>
+        {genres.map((genre) => (
+          <button
+            key={genre.id}
+            className="btn btn-outline-primary me-2"
+            onClick={() => setSelectedGenre(genre.id)}
+          >
+            {genre.name}
+          </button>
+        ))}
+      </div>
+
+      <table className="table table-bordered table-striped w-75 mx-auto">
+        <thead className="table-dark">
           <tr>
-            <td >
-              <button onClick={() => setSelectedCategory('All')}>All</button>
-            </td>
-            {
-              categories.map((category) => (
-                <td key={category.id}>
-                  <button onClick={() => setSelectedCategory(category.name)}>
-                    {category.name}
-                  </button>
-                </td>
-              ))
-            }
+            <th>ID</th>
+            <th>Title</th>
+            <th>Genres</th>
           </tr>
         </thead>
-      </table>
-
-      <br /><br />
-
-      <table border="1" width='500px'>
         <tbody>
-          {filteredProducts.map((product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>{product.name}</td>
-              <td>{product.category}</td>
+          {filteredMovies.map((movie) => (
+            <tr key={movie.id}>
+              <td>{movie.id}</td>
+              <td>{movie.title}</td>
+              <td>
+                {
+                  movie.genre_ids
+                    .map(id => genres.find(g => g.id === id)?.name)
+                    .filter(Boolean)
+                    .join(", ")
+                }
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
-export default App
-
-
-// import { useState } from 'react'
-// import './App.css'
-// import { categories, products } from './data'
-
-// function App() {
-//   const [selectedCategory, setSelectedCategory] = useState('All')
-
-//   const filteredProducts = selectedCategory === 'All'
-//     ? products
-//     : products.filter(product => product.category === selectedCategory)
-
-//   return (
-//     <div align="center">
-//       <table border="1">
-//         <thead>
-//           <tr>
-//             <td
-//               style={{ cursor: 'pointer' }}
-//               onClick={() => setSelectedCategory('All')}
-//             >
-//               All
-//             </td>
-//             {categories.map((category) => (
-//               <td
-//                 key={category.id}
-//                 style={{ cursor: 'pointer' }}
-//                 onClick={() => setSelectedCategory(category.name)}
-//               >
-//                 {category.name}
-//               </td>
-//             ))}
-//           </tr>
-//         </thead>
-//       </table>
-
-//       <br /><br />
-
-//       <table border="1" width="500px">
-//         <thead>
-//           <tr>
-//             <th>ID</th>
-//             <th>Name</th>
-//             <th>Category</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {filteredProducts.map((product) => (
-//             <tr key={product.id}>
-//               <td>{product.id}</td>
-//               <td>{product.name}</td>
-//               <td>{product.category}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   )
-// }
-
-// export default App
+export default App;

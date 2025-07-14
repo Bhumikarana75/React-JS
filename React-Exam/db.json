@@ -1,0 +1,26 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Inception",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "vote_average": 8.8,
+      "poster_path": "/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
+    },
+    {
+      "id": 2,
+      "title": "The Dark Knight",
+      "genre_ids": [
+        28,
+        80,
+        18
+      ],
+      "vote_average": 9,
+      "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+    }
+  ]
+}

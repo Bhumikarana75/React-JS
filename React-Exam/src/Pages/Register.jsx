@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Register.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function SignUp({ setUserList }) {
   const [newUsername, setNewUsername] = useState("");
@@ -9,25 +9,55 @@ function SignUp({ setUserList }) {
   const navigate = useNavigate();
 
   const handleCreateAccount = () => {
-    if (newUsername && newPassword && newEmail) {
-      const newUser = { username: newUsername, password: newPassword, email: newEmail };
-      const storedUserList = JSON.parse(localStorage.getItem("userList")) || [];
-      storedUserList.push(newUser);
-      localStorage.setItem("userList", JSON.stringify(storedUserList));
-      setUserList(storedUserList);
-      navigate("/");
-    } else {
+    if (!newUsername || !newPassword || !newEmail) {
       alert("Please fill in all fields.");
+      return;
     }
+
+    const newUser = {
+      username: newUsername,
+      password: newPassword,
+      email: newEmail,
+      name: newUsername,
+    };
+
+    const storedUsers = JSON.parse(localStorage.getItem("userList")) || [];
+    storedUsers.push(newUser);
+    localStorage.setItem("userList", JSON.stringify(storedUsers));
+    setUserList(storedUsers);
+    alert("Account created! You can now login.");
+    navigate("/");
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <input type="text" placeholder="Username" value={newUsername} onChange={(e) => setNewUsername(e.target.value)}/>
-      <input type="email" placeholder="Email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} style={{width:"97%",padding:"12px",margin:"15px,0",border: "1px solid #80deea",borderRadius: "5px",    transition:" border-color 0.3s, box-shadow 0.3s",fontSize:"16px"}}/>
-      <input type="password" placeholder="Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}/>
-      <button onClick={handleCreateAccount}>Sign Up</button>
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card p-4 shadow rounded" style={{ maxWidth: "400px", width: "100%" }}>
+        <h4 className="mb-3 text-center text-success">Register</h4>
+        <input
+          type="text"
+          className="form-control mb-3"
+          placeholder="Username"
+          value={newUsername}
+          onChange={(e) => setNewUsername(e.target.value)}
+        />
+        <input
+          type="email"
+          className="form-control mb-3"
+          placeholder="Email"
+          value={newEmail}
+          onChange={(e) => setNewEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          className="form-control mb-3"
+          placeholder="Password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+        <button className="btn btn-primary w-100" onClick={handleCreateAccount}>
+          Sign Up
+        </button>
+      </div>
     </div>
   );
 }
