@@ -1,20 +1,14 @@
-const initialState = {
+const initialMovieState = {
   movies: [],
-  loading: false,
-  error: null,
 };
 
-const movieReducer = (state = initialState, action) => {
+const movieReducer = (state = initialMovieState, action) => {
   switch (action.type) {
-    case "FETCH_MOVIES_REQUEST":
-      return { ...state, loading: true, error: null };
-
-    case "FETCH_MOVIES_SUCCESS":
-      return { ...state, loading: false, movies: action.payload };
-
-    case "FETCH_MOVIES_FAIL":
-      return { ...state, loading: false, error: action.payload };
-
+    case "SET_MOVIES":
+      return {
+        ...state,
+        movies: action.payload,
+      };
     default:
       return state;
   }

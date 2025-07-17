@@ -1,65 +1,68 @@
+// src/Pages/Register.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-function SignUp({ setUserList }) {
-  const [newUsername, setNewUsername] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [newEmail, setNewEmail] = useState("");
+const Register = () => {
   const navigate = useNavigate();
 
-  const handleCreateAccount = () => {
-    if (!newUsername || !newPassword || !newEmail) {
-      alert("Please fill in all fields.");
-      return;
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:5000/users");
+      const users = await res.json();
+
+      const existingUser = users.find((user) => user.email === form.email);
+      if (existingUser) {
+        alert("Email already registered");
+        return;
+      }
+
+      await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      alert("Registration successful! Please login.");
+      navigate("/login");
+    } catch (error) {
+      console.error("Register error:", error);
     }
-
-    const newUser = {
-      username: newUsername,
-      password: newPassword,
-      email: newEmail,
-      name: newUsername,
-    };
-
-    const storedUsers = JSON.parse(localStorage.getItem("userList")) || [];
-    storedUsers.push(newUser);
-    localStorage.setItem("userList", JSON.stringify(storedUsers));
-    setUserList(storedUsers);
-    alert("Account created! You can now login.");
-    navigate("/");
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-      <div className="card p-4 shadow rounded" style={{ maxWidth: "400px", width: "100%" }}>
-        <h4 className="mb-3 text-center text-success">Register</h4>
-        <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Username"
-          value={newUsername}
-          onChange={(e) => setNewUsername(e.target.value)}
-        />
-        <input
-          type="email"
-          className="form-control mb-3"
-          placeholder="Email"
-          value={newEmail}
-          onChange={(e) => setNewEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          className="form-control mb-3"
-          placeholder="Password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-        <button className="btn btn-primary w-100" onClick={handleCreateAccount}>
-          Sign Up
-        </button>
-      </div>
+    <div className="container mt-5" style={{ maxWidth: "500px" }}>
+      <h2 className="mb-4">Register</h2>
+      <form onSubmit={handleRegister}>
+        <div className="mb-3">
+          <label className="form-label">Name</label>
+          <input type="text" name="name" className="form-control" value={form.name} onChange={handleChange} required />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Email</label>
+          <input type="email" name="email" className="form-control" value={form.email} onChange={handleChange} required />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Password</label>
+          <input type="password" name="password" className="form-control" value={form.password} onChange={handleChange} required />
+        </div>
+        <button type="submit" className="btn btn-success">Register</button>
+      </form>
     </div>
   );
-}
+};
 
-export default SignUp;
+export default Register;

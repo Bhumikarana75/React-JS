@@ -1,34 +1,32 @@
+// src/Pages/Edit.jsx
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateMovie } from "../redux/action/movieAction";
 
 const EditMovie = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     title: "",
     genre_ids: "",
     vote_average: "",
-    poster_path: ""
+    poster_path: "",
   });
 
+  // Fetch the movie data using fetch
   useEffect(() => {
     const fetchMovie = async () => {
       try {
         const res = await fetch(`http://localhost:5000/movies/${id}`);
-        if (!res.ok) throw new Error("Movie not found");
         const data = await res.json();
-        setForm({
-          title: data.title,
-          genre_ids: data.genre_ids.join(", "),
-          vote_average: data.vote_average,
-          poster_path: data.poster_path
-        });
-      } catch (err) {
-        alert("Error loading movie.");
-        console.error(err);
+        setForm(data);
+      } catch (error) {
+        console.error("Fetch movie error:", error);
       }
     };
-
     fetchMovie();
   }, [id]);
 
@@ -36,56 +34,33 @@ const EditMovie = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleUpdate = async () => {
-    const updatedMovie = {
-      title: form.title,
-      genre_ids: form.genre_ids.split(",").map(Number),
-      vote_average: parseFloat(form.vote_average),
-      poster_path: form.poster_path
-    };
-
-    try {
-      const res = await fetch(`http://localhost:5000/movies/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedMovie)
-      });
-
-      if (!res.ok) throw new Error("Failed to update");
-
-      alert("Movie updated successfully!");
-      navigate("/view");
-    } catch (err) {
-      console.error("Update error:", err);
-      alert("Error updating movie.");
-    }
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    dispatch(updateMovie(id, form, navigate));
   };
 
   return (
-    <div className="container mt-4 col-md-8">
-      <h3 className="text-center mb-4 text-warning">✏️ Edit Movie</h3>
-
-      <div className="form-group mb-3">
-        <label>Title</label>
-        <input type="text" name="title" className="form-control" value={form.title} onChange={handleChange} />
-      </div>
-
-      <div className="form-group mb-3">
-        <label>Genre IDs (comma separated)</label>
-        <input type="text" name="genre_ids" className="form-control" value={form.genre_ids} onChange={handleChange} />
-      </div>
-
-      <div className="form-group mb-3">
-        <label>Rating</label>
-        <input type="number" name="vote_average" className="form-control" value={form.vote_average} onChange={handleChange} />
-      </div>
-
-      <div className="form-group mb-4">
-        <label>Poster Path</label>
-        <input type="text" name="poster_path" className="form-control" value={form.poster_path} onChange={handleChange} />
-      </div>
-
-      <button className="btn btn-primary w-100" onClick={handleUpdate}>Update Movie</button>
+    <div className="container mt-5">
+      <h2 className="mb-4">Edit Movie</h2>
+      <form onSubmit={handleUpdate}>
+        <div className="mb-3">
+          <label className="form-label">Title</label>
+          <input type="text" name="title" className="form-control" value={form.title} onChange={handleChange} required />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Genre</label>
+          <input type="text" name="genre_ids" className="form-control" value={form.genre_ids} onChange={handleChange} required />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Vote Average</label>
+          <input type="number" name="vote_average" className="form-control" value={form.vote_average} onChange={handleChange} required />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Poster URL</label>
+          <input type="text" name="poster_path" className="form-control" value={form.poster_path} onChange={handleChange} required />
+        </div>
+        <button type="submit" className="btn btn-primary">Update Movie</button>
+      </form>
     </div>
   );
 };

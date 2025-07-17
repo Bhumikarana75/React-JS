@@ -1,36 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from "./Pages/Register";
-import SignIn from "./Pages/Login";
-import Navbar from "./component/Navbar";
-import ViewMovies from "./Pages/View";
+import Navbar from "./component/navbar";
 import AddMovie from "./Pages/Add";
 import EditMovie from "./Pages/Edit";
+import ViewMovies from "./Pages/View";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
 
-function App() {
-  const [userList, setUserList] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const loggedInStatus = localStorage.getItem("isLoggedIn");
-    setIsLoggedIn(loggedInStatus === "true");
-  }, []);
-
+const App = () => {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={<SignIn userList={userList} setIsLoggedIn={setIsLoggedIn} />}
-        />
-        <Route path="/signup" element={<SignUp setUserList={setUserList} />} />
-        <Route path="/add" element={<AddMovie />} />
-        <Route path="/view" element={<ViewMovies />} />
-        <Route path="/edit/:id" element={<EditMovie />} />
-      </Routes>
+      <div className="container mt-4">
+        <Routes>
+          <Route path="/view" element={<ViewMovies />} />
+          <Route path="/add" element={<AddMovie />} />
+          <Route path="/edit/:id" element={<EditMovie />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </div>
     </Router>
   );
-}
+};
 
 export default App;

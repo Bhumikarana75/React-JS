@@ -1,24 +1,24 @@
-// Check login status from localStorage
-const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-const storedUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
-  isAuthenticated: isLoggedIn,
-  user: storedUser,
+  isAuthenticated: user ? true : false,
+  user: user || null,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOGIN_SUCCESS":
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("currentUser", JSON.stringify(action.payload));
-      return { ...state, isAuthenticated: true, user: action.payload };
-
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload,
+      };
     case "LOGOUT":
-      localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("currentUser");
-      return { ...state, isAuthenticated: false, user: null };
-
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+      };
     default:
       return state;
   }

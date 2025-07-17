@@ -1,86 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// src/Pages/View.jsx
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { deleteMovie, fetchMovies } from "../redux/action/movieAction";
 
 const ViewMovies = () => {
-  const [movies, setMovies] = useState([]);
-  const navigate = useNavigate();
-
-  const fetchMovies = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/movies");
-      const data = await res.json();
-      setMovies(data);
-    } catch (err) {
-      console.error("Error fetching movies:", err);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    const confirm = window.confirm("Are you sure you want to delete this movie?");
-    if (!confirm) return;
-
-    try {
-      const res = await fetch(`http://localhost:5000/movies/${id}`, {
-        method: "DELETE"
-      });
-
-      if (res.ok) {
-        alert("Movie deleted!");
-        fetchMovies();
-      } else {
-        throw new Error("Delete failed");
-      }
-    } catch (err) {
-      console.error("Delete error:", err);
-      alert("Error deleting movie.");
-    }
-  };
-
-  const handleEdit = (id) => {
-    navigate(`/edit/${id}`);
-  };
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movie.movies);
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    dispatch(fetchMovies());
+  }, [dispatch]);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this movie?")) {
+      dispatch(deleteMovie(id));
+    }
+  };
 
   return (
-    <div className="container mt-4">
-      <h3 className="text-center text-info mb-4">🎞️ All Movies</h3>
-
-      <table className="table table-bordered table-striped table-hover">
-        <thead className="table-dark">
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Genres</th>
-            <th>Rating</th>
-            <th>Poster</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {movies.map((m) => (
-            <tr key={m.id}>
-              <td>{m.id}</td>
-              <td>{m.title}</td>
-              <td>{m.genre_ids.join(", ")}</td>
-              <td>{m.vote_average}</td>
-              <td>
-                <img src={m.poster_path} alt={m.title} style={{ width: "60px" }} />
-              </td>
-              <td>
-                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(m.id)}>
-                  ✏️ Edit
-                </button>
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(m.id)}>
-                  🗑 Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mt-5">
+      <h2 className="mb-4">Movie List</h2>
+      <Link to="/add" className="btn btn-primary mb-3">Add Movie</Link>
+      <div className="row">
+        {movies.map((movie) => (
+          <div className="col-md-4 mb-4" key={movie.id}>
+            <div className="card h-100 shadow-sm">
+              <img src={movie.poster_path} className="card-img-top" alt={movie.title} />
+              <div className="card-body">
+                <h5 className="card-title">{movie.title}</h5>
+                <p className="card-text">Genre: {movie.genre_ids}</p>
+                <p className="card-text">Rating: {movie.vote_average}</p>
+                <div className="d-flex justify-content-between">
+                  <Link to={`/edit/${movie.id}`} className="btn btn-warning btn-sm">Edit</Link>
+                  <button onClick={() => handleDelete(movie.id)} className="btn btn-danger btn-sm">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
